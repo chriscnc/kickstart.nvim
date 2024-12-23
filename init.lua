@@ -93,6 +93,9 @@ vim.g.maplocalleader = ' '
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.g.have_nerd_font = false
 
+-- Turn off search highlighing
+vim.o.hlsearch = false
+
 -- [[ Setting options ]]
 -- See `:help vim.opt`
 -- NOTE: You can change these options as you wish!
@@ -436,6 +439,11 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>sn', function()
         builtin.find_files { cwd = vim.fn.stdpath 'config' }
       end, { desc = '[S]earch [N]eovim files' })
+
+      -- Shortcut for searching across all projects
+      vim.keymap.set('n', '<leader>sp', function()
+        builtin.find_files { cwd = vim.fn.expand '$HOME/projects' }
+      end, { desc = "[S]earch all [P]roject's files" })
     end,
   },
 
