@@ -96,6 +96,9 @@ vim.g.have_nerd_font = false
 -- Turn off search highlighing
 vim.o.hlsearch = false
 
+-- No wrap long lines
+vim.o.wrap = false
+
 -- [[ Setting options ]]
 -- See `:help vim.opt`
 -- NOTE: You can change these options as you wish!
