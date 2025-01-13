@@ -198,6 +198,7 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 
 -- Additional map for Esc
 vim.keymap.set('i', 'kj', '<Esc>', { noremap = true, desc = 'Escape insert mode' })
+vim.keymap.set('n', 'kj', '<Esc>', { noremap = true, desc = 'Escape insert mode' })
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
@@ -630,7 +631,7 @@ require('lazy').setup({
       local servers = {
         -- clangd = {},
         -- gopls = {},
-        pyright = {},
+        -- pyright = {},
         -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
