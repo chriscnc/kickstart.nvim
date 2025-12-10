@@ -247,6 +247,43 @@ require('lazy').setup({
   --
   -- Use `opts = {}` to force a plugin to be loaded.
   --
+  {
+    'zbirenbaum/copilot.lua',
+    cmd = 'Copilot',
+    event = 'InsertEnter',
+    config = function()
+      vim.env.NODE_EXTRA_CA_CERTS = '/Users/chris.cornelison/.certificates/github-copilot.pem'
+      require('copilot').setup {
+        suggestion = {
+          auto_trigger = true,
+          keymap = {
+            accept = '<C-j>', -- I'm using Ctrl+J as an example, customize it!
+            dismiss = '<C-h>',
+          },
+        },
+      }
+    end,
+  },
+
+  {
+    'CopilotC-Nvim/CopilotChat.nvim',
+    --    url = 'https://github.com/CopilotC-Nvim/CopilotChat.nvim',
+    branch = 'main', -- Recommended for latest features
+    dependencies = {
+      { 'zbirenbaum/copilot.lua' }, -- Declares the dependency
+      { 'nvim-lua/plenary.nvim' }, -- Common utility library
+    },
+    opts = {
+      debug = false, -- Enable debugging if you have issues
+      -- See the plugin's documentation for more configuration options
+    },
+    -- Example keymaps for the chat functionality
+    keys = {
+      { '<leader>cc', '<cmd>CopilotChat<cr>', desc = 'Copilot Chat' },
+      { '<leader>ce', '<cmd>CopilotChatExplain<cr>', desc = 'Copilot - Explain code' },
+      { '<leader>ct', '<cmd>CopilotChatTests<cr>', desc = 'Copilot - Generate tests' },
+    },
+  },
 
   -- Here is a more advanced example where we pass configuration
   -- options to `gitsigns.nvim`. This is equivalent to the following Lua:
@@ -952,7 +989,7 @@ require('lazy').setup({
   --    This is the easiest way to modularize your config.
   --
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
-  -- { import = 'custom.plugins' },
+  { import = 'custom.plugins' },
   --
   -- For additional information with loading, sourcing and examples see `:help lazy.nvim-🔌-plugin-spec`
   -- Or use telescope!
